@@ -4,13 +4,16 @@
     margin-inline: auto;
     padding-inline: 5rem;
     height: 100dvh;
+    min-height: 100dvh;
+    overflow-y: hidden;
 }
 
 .hero-container {
-    display: flex;
-    gap: 2rem;
     width: 100%;
-    height: 100%;
+    min-height: 100dvh; /* Tetap satu layar penuh */
+    display: flex;
+    justify-content: flex-start; /* KUNCINYA: Paksa konten ke ATAS, bukan ke tengah */
+    margin-top: 13rem;
 }
 
 .left-hero, .right-hero {
@@ -23,6 +26,7 @@
     margin-inline: auto;
 }
 
+/* LEFT CONTENT */
 .left-hero h1 {
     font-size: 2.5rem;
     margin: 0;
@@ -83,4 +87,83 @@
     background-color: white;
     border-radius: 0.25rem;
     color: var(--primary);
+}
+
+/* RIGHT CONTENT */
+.right-hero {
+    position: relative;
+}
+
+.right-hero .card {
+    width: 15rem;
+    height: 20rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: white;
+    position: absolute;
+    transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.right-hero .card:first-child.p {
+    /* top: -3rem;
+    left: 12rem;
+    z-index: 2; */
+    animation: FlipCardToFirst 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.right-hero .card:last-child.p {
+    /* top: -3rem;
+    left: 12rem;
+    z-index: 2; */
+    animation: FlipCardToFirst 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.right-hero .card:first-child {
+    /* top: 1rem;
+    left: 18rem;
+    z-index: 1; */
+    animation: FlipCardToBack 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+}
+
+.right-hero .card:last-child {
+    /* top: 1rem;
+    left: 18rem;
+    z-index: 1; */
+    animation: FlipCardToBack 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+}
+
+@keyframes FlipCardToFirst {
+    0% {
+        top: 1rem;
+        left: 18rem;
+        z-index: 1;
+    }
+    35% {
+        top: 3rem;
+        left: 20rem;
+    }
+    100% {
+        top: -3rem;
+        left: 12rem;
+        z-index: 2;
+    }
+}
+
+@keyframes FlipCardToBack {
+    0% {
+        top: -3rem;
+        left: 12rem;
+        z-index: 2;
+    }
+    35% {
+        top: -5rem;
+        left: 10rem;
+    }
+    100% {
+        top: 1rem;
+        left: 18rem;
+        z-index: 1;
+    }
 }

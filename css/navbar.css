@@ -6,6 +6,8 @@ nav {
     justify-content: space-between;
     padding: 10px 5px;
     background-color: white;
+    max-width: 1500px;
+    margin-inline: auto;
 }
 
 a {text-decoration: none;}
