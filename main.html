@@ -19,15 +19,13 @@
     const navContainer = document.querySelector('.nav-container');
     const links = document.querySelectorAll('.link');
 
-    // Fungsi utama untuk tukar-menukar
-function toggleNav() {
-    // 1. Geser background pill (::before)
-    navContainer.classList.toggle('active');
+    function toggleNav() {
+        navContainer.classList.toggle('active');
 
-    // 2. Tukar class active pada teks link
-    links[0].classList.toggle('active');
-    links[1].classList.toggle('active');
-}
+        links[0].classList.toggle('active');
+        links[1].classList.toggle('active');
+        navContainer.classList.add('clicked');
+    }
 
 // Cukup pasang SATU listener di container-nya
 navContainer.addEventListener('click', (e) => {

@@ -30,6 +30,10 @@ nav {
     transform: scale(1.05);
 }
 
+.nav-container:active {
+    transform: scale(.9);
+}
+
 .nav-container::before {
     content: '';
     position: absolute;
@@ -46,7 +50,7 @@ nav {
     animation: moveRight 0.45s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
-.nav-container:not(.active)::before {
+.nav-container.clicked:not(.active)::before {
     animation: moveLeft 0.45s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
