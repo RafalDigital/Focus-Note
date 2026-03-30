@@ -38,17 +38,20 @@ cards.forEach((c) => {
 })
 
 // INFO SECTION
+function handleFirstScroll(e) {
+    let currentPosition = e.scroll;
+    
+    if (currentPosition > 0 && currentPosition < 200) {
+        
+        lenis.off('scroll', handleFirstScroll);
 
-window.addEventListener('scroll', () => {
-
-    const currentPosition = window.scrollY ;
-    console.log(window.scrollY)
-
-    if (currentPosition >= 1 && currentPosition < 200) {
-        window.scrollTo ({
-            top: 500,
-            behavior: 'smooth'
-        })
+        lenis.scrollTo('#info', {
+            duration: 1.5,
+            lock: true
+        });
+        
+        console.log("Lompatan dieksekusi!");
     }
+}
 
-}, { once: true,passive: true });
+lenis.on('scroll', handleFirstScroll);
