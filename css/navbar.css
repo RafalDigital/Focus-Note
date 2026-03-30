@@ -8,6 +8,7 @@ nav {
     background-color: white;
     max-width: 1500px;
     margin-inline: auto;
+    z-index: 1000;
 }
 
 a {text-decoration: none;}

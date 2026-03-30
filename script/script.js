@@ -1,3 +1,15 @@
+// LENIS INITIALIZATION
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true
+  });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
 // HERO SECTION
 const cards = document.querySelectorAll('.card');
 let isProcessing = false;
@@ -30,12 +42,13 @@ cards.forEach((c) => {
 window.addEventListener('scroll', () => {
 
     const currentPosition = window.scrollY ;
+    console.log(window.scrollY)
 
-    if (currentPosition > 0 && currentPosition < 200) {
+    if (currentPosition >= 1 && currentPosition < 200) {
         window.scrollTo ({
-            top: 200,
+            top: 500,
             behavior: 'smooth'
         })
     }
 
-}, { once: true, passive: true });
+}, { once: true,passive: true });
