@@ -31,7 +31,7 @@ nav {
 }
 
 .nav-container:active {
-    transform: scale(.9);
+    transform: scale(.95);
 }
 
 .nav-container::before {
