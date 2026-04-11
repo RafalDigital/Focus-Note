@@ -12,6 +12,10 @@
 
 
 // NAVBAR
+const nav = document.querySelector('.navbar')
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 0);
+});
 
 // HERO SECTION
 const cards = document.querySelectorAll('.card');
@@ -40,6 +44,14 @@ cards.forEach((c) => {
     });
 })
 
+function infoClick() {
+        lenis.scrollTo('#info', {
+            duration: 1.5,
+            lock: true,
+            offset: -100
+        });
+}
+
 // INFO SECTION
 const infoSection = document.querySelector('.info-section');
 function handleFirstScroll(e) {
@@ -51,7 +63,8 @@ function handleFirstScroll(e) {
 
         lenis.scrollTo('#info', {
             duration: 1.5,
-            lock: true
+            lock: true,
+            offset: -100
         });
         
         console.log("Lompatan dieksekusi!");

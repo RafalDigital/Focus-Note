@@ -78,15 +78,15 @@
 .left-hero .btn-1 a:hover {border-color: var(--primary); color: var(--primary);}
 .left-hero .btn-1 a span {text-align: center;}
 
-.left-hero .btn-2 a {
-    display: inline-block;
-    padding: 10px 15px;
-    width: 6rem;
+.left-hero .btn-2 button {
+    padding: 12px 15px;
+    width: 8rem;
     text-align: center;
     border: 1px solid var(--primary);
     background-color: white;
     border-radius: 0.25rem;
     color: var(--primary);
+    font-size: 16px;
 }
 
 /* RIGHT CONTENT */
@@ -168,5 +168,35 @@
         left: 18rem;
         z-index: 1;
         scale: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .right-hero {
+        display: none;
+    }
+    .buttons {
+        justify-content: center;
+    }
+    .left-hero h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        color: var(--primary);
+        text-align: center;
+    }
+    .left-hero p {
+        font-size: 1.25rem;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    .hero-container {
+        width: 100%;
+        min-height: 100dvh; /* Tetap satu layar penuh */
+        display: flex;
+        justify-content: center; /* KUNCINYA: Paksa konten ke ATAS, bukan ke tengah */
+        margin-top: 13rem;
     }
 }

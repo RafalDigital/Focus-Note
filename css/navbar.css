@@ -1,4 +1,4 @@
-nav {
+.navbar {
     left: 0; right: 0; top: 0;
     position: fixed;
     display: flex;
@@ -9,6 +9,10 @@ nav {
     max-width: 1500px;
     margin-inline: auto;
     z-index: 1000;
+}
+
+.navbar.scrolled {
+    border-bottom: 1px solid #bbbbbb;
 }
 
 a {text-decoration: none;}
