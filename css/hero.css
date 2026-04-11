@@ -198,5 +198,6 @@
         display: flex;
         justify-content: center; /* KUNCINYA: Paksa konten ke ATAS, bukan ke tengah */
         margin-top: 13rem;
+        padding-bottom: 2rem;
     }
 }
