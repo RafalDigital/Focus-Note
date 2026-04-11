@@ -1,4 +1,119 @@
+/* CTA */
+.cta {
+    text-align: center;
+    padding: 6rem 2rem;
+}
+
+.cta h1 {
+    font-size: 2.2rem;
+    color: var(--primary);
+}
+
+.cta p {
+    margin-top: 1rem;
+    opacity: 0.7;
+    font-size: 1rem;
+}
+
+.cta a:hover {
+    opacity: 0.85;
+}
+
+.cta a {
+    display: inline-block;
+    padding: 10px 15px;
+    width: 6rem;
+    text-align: center;
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+    border-radius: 0.25rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.cta a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -150%; 
+    transform: translateY(-50%);
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background-color: white;
+    z-index: -1;
+    transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.cta a:hover::before {left: -4%;}
+.cta a span {text-align: center;}
+.cta a:hover {border-color: var(--primary); color: var(--primary);}
+
+
+/* FOOTER */
 .footer {
-    width: 100%;
-    height: 30rem;
+    border-top: 1px solid #eee;
+    padding: 3rem 2rem 1.5rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.footer-left h2 {
+    margin: 0;
+    color: var(--primary);
+}
+
+.footer-left p {
+    margin-top: 0.5rem;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-right a {
+    text-decoration: none;
+    color: black;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.footer-right a:hover {
+    opacity: 1;
+    color: var(--primary);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-right {
+        flex-direction: row;
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
 }
