@@ -144,11 +144,11 @@
 }
 
 .cta.show p {
-    animation-delay: 4s;
+    animation-delay: 2s;
 }
 
 .cta.show a {
-    animation-delay: 6s;
+    animation-delay: 4s;
 }
 
 @keyframes footerShow {
