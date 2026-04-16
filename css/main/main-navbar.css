@@ -15,7 +15,7 @@
 
 .logo{display: flex; gap: .5rem;}
 /* .logo img {width: 3rem;} */
-.logo img {width: 10rem;}
+.logo img {width:7rem;}
 .logo h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 24px; 
@@ -23,8 +23,12 @@
     color: var(--primary);
 }
 
+.line {
+    opacity: .5;
+}
+
 .add-note-form {
-    padding: 10px 15px;
+    padding: 5px 10px;
     background-color: var(--primary);
     border-radius: 1rem;
     border: 1px solid var(--primary);
@@ -37,7 +41,7 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-.add-note-form span {color: white; transition: 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);}
+.add-note-form span {color: white; transition: 1.2s cubic-bezier(0.165, 0.84, 0.44, 1); font-size: 12px;}
 
 .add-note-form::before {
     content: '';
@@ -71,14 +75,18 @@
     color: var(--primary);
 }
 
+.notebook-bar p {
+    font-size: 12px;
+}
+
 .add-notebook-form {
     border: none;
     width: fit-content;
     height: fit-content;
-    font-size: 1rem;
+    font-size: 12px;
     cursor: pointer;
     color: var(--primary);
-    padding: .2rem .5rem;
+    padding: .1rem .3rem;
     position: relative;
     border-radius: 1rem;
     z-index: 1;
@@ -89,7 +97,7 @@
 .add-notebook-form::before {
     content: '';
     position: absolute;
-    right: -400%; 
+    right: -600%; 
     top: -50%;
     transform: translateX(-50%);
     width: 5rem;
@@ -102,7 +110,7 @@
 }
 
 .add-notebook-form:hover::before {
-    right: -200%;
+    right: -300%;
 }
 
 .add-notebook-form:hover {
@@ -121,7 +129,7 @@
 
 .footer {
     /* border-top: 1px solid var(--option2); */
-    padding: .5rem .5rem;
+    padding: .2rem .5rem;
     /* padding-bottom: 2.5rem; */
     margin-inline: auto;
     /* box-shadow: -0px 4px 10px rgba(0, 0, 0, 0.4); */
@@ -129,7 +137,7 @@
 
 .footer p {
     margin: 0;
-    font-size: 12px;
+    font-size: 10px;
     opacity: 0.5;
     text-align: center;
 }
@@ -145,5 +153,17 @@
     /* Gunakan calc untuk mengurangi lebar margin agar tidak overflow */
     width: calc(100% - 250px); 
     margin-left: 250px; /* Samakan dengan lebar .side-nav */
-    background-color: black;
+    /* background-color: black; */
+}
+
+.navbar .navbar-1 {
+    margin-top: .2rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.navbar .navbar-2 {
+    margin-top: .5rem;
+    font-size: 14px;
 }
