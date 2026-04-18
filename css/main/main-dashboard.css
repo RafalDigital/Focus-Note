@@ -51,9 +51,10 @@ body, html {
 
 .content {
     display: grid;
-    align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    /* align-items: center; */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: min-content;
+    gap: 1rem;
     overflow-y: auto;
     height: calc(100vh - 5rem); 
     width: 100%;
@@ -64,13 +65,191 @@ body, html {
     padding-inline: 2rem;
 }
 
-.content div {
+.content .note-card {
+    position: relative;
     width: 100%;
+    height: 100%;
+    max-height: 10rem;
     aspect-ratio: 16 / 9; 
     background-color: var(--option3);
     border-radius: .5rem;
     border: 1px solid var(--option2);
     margin-inline: auto;
+    padding: 10px 10px;
+    overflow: hidden;
+    transition: .2s ease-out;
+    cursor: pointer;
+}
+
+.note-card .note-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background: linear-gradient(to top, var(--option3) 40%, transparent);
+    z-index: 5;
+}
+
+.note-card h3 {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: .5rem;
+    font-size: 16px;
+}
+
+.note-card p {
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: .2rem;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.line-card {
+    width: 100%;
+    height: 1px;
+    background-color: var(--option2);
+    border-radius: 100rem;
+    margin-inline: auto;
+    margin-block: .4rem;
+}
+
+.line-card-note {
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--option2);
+    border-radius: 100rem;
+    margin-inline: auto;
+    margin-top: -.2rem;
+    opacity: .6;
+}
+
+.delete-note-card {
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .2s ease-out;
+    border: none;
+    background-color: transparent;
+    color: rgb(150, 148, 148);
+}
+
+.delete-note-card:hover {
+    color: black;
+}
+
+.note-card:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.note-card:hover .delete-note-card {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Note */
+.note {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    top: 51%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: var(--option3);
+    border: 1px solid var(--option2);
+    border-radius: .5rem;
+    padding: 15px 20px;
+    z-index: 100;
+    max-width: 40%;
+    width: 100%;
+    max-height: 60%;
+    height: 100%;
+    gap: 1rem;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.note.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.note .title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.note h3 {
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0;
+}
+
+.note .title button {
+    border: none;
+    background-color: transparent;
+    color: rgb(150, 148, 148);
+    cursor: pointer;
+    transition: .2s ease-out;
+}
+
+.note .title button:hover {
+    color: black;
+}
+
+.note p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.buttons-note {
+    position: absolute;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-inline: 1.5rem;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background: linear-gradient(to top, var(--option3) 40%, transparent);
+    z-index: 2;
+}
+
+.buttons-note button {
+    padding: 8px 15px;
+    background-color: transparent;
+    border: none;
+    border-radius: .4rem;
+    outline: none;
+    color: rgb(150, 148, 148);
+    cursor: pointer;
+    transition: .2s ease-out;
+}
+
+.buttons-note button:hover {
+    color: var(--primary);
+}
+
+.buttons-note button.save-note {
+    background-color: var(--option2);
+    color: rgb(150, 148, 148);
+    cursor: pointer;
+    transition: .2s ease-out;
+}
+
+.buttons-note button.save-note.change {
+    color: white;
+    background-color: var(--primary);
+}
+
+.cancel-note {
+    margin-right: .5rem;
 }
 
 /* Form */
@@ -84,12 +263,14 @@ body, html {
     background-color: white;
     border-radius: .5rem;
     padding: 15px 20px;
-    z-index: 100;
+    z-index: 1000;
     max-width: 40%;
     width: 100%;
     gap: 1rem;
     opacity: 0;
     pointer-events: none;
+    background-color: var(--option3);
+    border: 1px solid var(--option2);
 }
 
 .form .form-buttons {
@@ -124,12 +305,13 @@ body, html {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     opacity: 0;
     pointer-events: none;
+    z-index: 5;
 }
 
 .dark-layer.show, .form.show {
@@ -138,6 +320,46 @@ body, html {
     transition: .2s ease-in-out;
 }
 
+.blur-layer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+    transition: .2s ease-in-out;
+}
+
+.blur-layer.show {
+    backdrop-filter: blur(10px);
+    opacity: 1;
+    pointer-events: all;
+}
+
 .form.show {
     top: 50%;
+}
+
+/* Note Full Editor */
+.edit-note-content {
+    resize: none;
+    max-height: 15rem;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.edit-note-title {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.edit-note-title:focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
