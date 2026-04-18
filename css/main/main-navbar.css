@@ -337,10 +337,10 @@
 
 .mobile-add-note {
     position: absolute;
-    right: 3%;
-    top: 88%;
+    right: 0%;
+    top: 85%;
     transform: translateX(-50%) translateY(-50%);
-    padding: 20px 30px;
+    padding: 25px 30px;
     border-radius: .5rem;
     outline: none;
     border: 1px solid var(--primary);
