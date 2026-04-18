@@ -125,6 +125,74 @@
     margin-inline: auto;
     background-color: var(--option1);
     border-radius: 1rem;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    overflow-x: hidden;
+}
+
+.notebook-card {
+    padding: 10px 15px;
+    width: 95%;
+    height: fit-content;
+    background-color: var(--option1);
+    border-radius: .5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.notebook-card p {
+    display: inline-block;
+    font-size: 14px;
+    max-width: 6rem;
+    overflow-y: auto;
+    height: fit-content;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.notebook-card p::-webkit-scrollbar {
+    display: none;
+}
+
+.buttons {
+    opacity: 0;
+    pointer-events: none;
+    transition: .2s ease-in-out;
+    display: flex;
+    gap: .5rem;
+}
+
+.buttons button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.buttons i {
+    font-size: 14px;
+}
+
+.notebook-card:hover {
+    background-color: var(--option2);
+}
+
+.notebook-card:hover .buttons {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.notebook-card.draft input{
+    width: 90%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    outline: none;
 }
 
 .footer {
@@ -149,7 +217,7 @@
     height: fit-content;
     top: 0;
     right: 0;
-    padding: 10px 15px;
+    padding: 10px 30px;
     /* Gunakan calc untuk mengurangi lebar margin agar tidak overflow */
     width: calc(100% - 250px); 
     margin-left: 250px; /* Samakan dengan lebar .side-nav */
@@ -157,13 +225,55 @@
 }
 
 .navbar .navbar-1 {
-    margin-top: .2rem;
+    margin-top: .4rem;
     display: flex;
     justify-content: space-between;
     font-size: 12px;
 }
 
+.navbar-1 label i {
+    font-size: 18px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    transition: .4s ease-out;
+}
+
+.navbar-1 label i {
+    color: var(--option2);
+}
+
+.navbar-1 label i.ri-sun-line:hover {
+    color: var(--sun);
+    scale: 1.1;
+}
+
+.navbar-1 label i.ri-moon-fill:hover {
+    color: var(--moon);
+    scale: 1.1;
+}
+
+.navbar-1 label input {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0
+}
+
+.navbar-1 label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 .navbar .navbar-2 {
-    margin-top: .5rem;
+    margin-top: -.5rem;
     font-size: 14px;
 }

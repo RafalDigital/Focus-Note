@@ -1,7 +1,10 @@
 :root {
     --primary: #3D00FF;
     --option1: #eee;
-    --option2: #d4d4d4;
+    --option3: #e4e4e4;
+    --option2: hsl(0, 0%, 80%);
+    --moon: #979797;
+    --sun:#ffd900;
 }
 
 * {
