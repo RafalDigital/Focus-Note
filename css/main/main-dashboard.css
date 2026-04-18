@@ -8,24 +8,17 @@ body, html {
     width: 100%;
     height: 100%;
     max-height: 100dvh;
-    overflow: hidden; /* Memastikan body tidak ikutan scroll */
+    overflow: hidden;
 }
 
 .main-content {
     position: relative;
     background-color: var(--option1);
     height: 100%;
-    /* Gunakan calc untuk mengurangi lebar margin agar tidak overflow */
     width: calc(100% - 250px); 
-    margin-left: 250px; /* Samakan dengan lebar .side-nav */
+    margin-left: 250px;
 }
 
-/* .wrapper {
-    display: flex; 
-    width: 100%;
-    height: 100dvh;
-    overflow: hidden;
-} */
 .blank {
     position: absolute;
     left: 50%;
@@ -35,6 +28,7 @@ body, html {
     flex-direction: column;
     align-items: center;
     opacity: 0.5;
+    color: var(--black);
 
 }
 .blank i{
@@ -93,14 +87,14 @@ body, html {
 
 .note-card h3 {
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.7);
+    color: var(--black-07);
     margin-bottom: .5rem;
     font-size: 16px;
 }
 
 .note-card p {
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--black-05);
     margin-top: .2rem;
     font-size: 14px;
     line-height: 1.4;
@@ -136,15 +130,15 @@ body, html {
     transition: .2s ease-out;
     border: none;
     background-color: transparent;
-    color: rgb(150, 148, 148);
+    color: var(--option4);
 }
 
 .delete-note-card:hover {
-    color: black;
+    color: var(--black);
 }
 
 .note-card:hover {
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 10px var(--black-05);
 }
 
 .note-card:hover .delete-note-card {
@@ -172,6 +166,7 @@ body, html {
     gap: 1rem;
     opacity: 0;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .note.show {
@@ -188,23 +183,25 @@ body, html {
     font-weight: 500;
     font-size: 18px;
     margin: 0;
+    color: var(--black);
 }
 
 .note .title button {
     border: none;
     background-color: transparent;
-    color: rgb(150, 148, 148);
+    color: var(--option4);
     cursor: pointer;
     transition: .2s ease-out;
 }
 
 .note .title button:hover {
-    color: black;
+    color: var(--black);
 }
 
 .note p {
     font-size: 14px;
     margin: 0;
+    color: var(--black);
 }
 
 .buttons-note {
@@ -227,7 +224,7 @@ body, html {
     border: none;
     border-radius: .4rem;
     outline: none;
-    color: rgb(150, 148, 148);
+    color: var(--option4);
     cursor: pointer;
     transition: .2s ease-out;
 }
@@ -238,13 +235,13 @@ body, html {
 
 .buttons-note button.save-note {
     background-color: var(--option2);
-    color: rgb(150, 148, 148);
+    color: var(--option4);
     cursor: pointer;
     transition: .2s ease-out;
 }
 
 .buttons-note button.save-note.change {
-    color: white;
+    color: var(--white);
     background-color: var(--primary);
 }
 
@@ -260,7 +257,7 @@ body, html {
     left: 50%;
     top: 51%;
     transform: translateX(-50%) translateY(-50%);
-    background-color: white;
+    background-color: var(--white);
     border-radius: .5rem;
     padding: 15px 20px;
     z-index: 1000;
@@ -271,6 +268,7 @@ body, html {
     pointer-events: none;
     background-color: var(--option3);
     border: 1px solid var(--option2);
+    color: var(--black);
 }
 
 .form .form-buttons {
@@ -289,10 +287,10 @@ body, html {
     cursor: pointer;
 }
 
-.form-buttons .submit-btn {
+.form-buttons .submit-btn, .delete-confirm, .ok-btn {
     background-color: var(--primary);
     border: 1px solid var(--primary);
-    color: var(--option1);
+    color: white;
     transition: .4s ease-in-out;
 }
 
@@ -305,7 +303,7 @@ body, html {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--black-05);
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -324,7 +322,7 @@ body, html {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--black-05);
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -352,14 +350,39 @@ body, html {
     border: none;
     outline: none;
     background-color: transparent;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--black);
 }
 
 .edit-note-title {
     border: none;
     outline: none;
     background-color: transparent;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--black);
 }
 
 .edit-note-title:focus {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid var(--black-05);
+}
+
+@media (max-width: 1200px) {
+    .note {
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    .note {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 620px) {
+    .main-content {
+        width: 100%; 
+        margin-left: 0;
+    }
 }

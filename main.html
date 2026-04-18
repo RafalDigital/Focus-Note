@@ -22,7 +22,7 @@
     <!-- Khusus Desktop atau Layar besar -->
     <nav class="side-nav">
         <div class="logo">
-            <img src="assets/svg/Logo6.svg" alt="">
+            <img id="Logo" src="assets/svg/Logo6.svg" alt="">
             <!-- <h1>FocusNotes</h1> -->
         </div>
         <div class="line"></div>
@@ -85,12 +85,16 @@
 
     <nav class="navbar">
         <div class="navbar-1">
-            <p id="date"></p>
-            <label for="dark-mode">
-                <input type="checkbox" name="dark-mode" id="dark-mode">
-                <i class="ri-sun-line" id="dark-icon"></i>
-            </label>
-            <!-- Khusus HP ada Hamburger -->
+            <p id="date" class="date"></p>
+            <div class="button-wrapper">
+                <label for="dark-mode">
+                    <input type="checkbox" name="dark-mode" id="dark-mode">
+                    <i class="ri-sun-line" id="dark-icon"></i>
+                </label>
+                <button id="mobile-menu" class="mobile-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
         </div>
         <div class="navbar-2">
             <h1 id="notebook-dashboard-title" class="notebook-dashboard-title">No Notebook Selected</h1>
@@ -101,6 +105,9 @@
     <div class="dark-layer"></div>
     <div class="blur-layer"></div>
 
+    <button class="mobile-add-note" id="mobile-add-note">
+        <span class="material-symbols-outlined">add_2</span>
+    </button>
 
 </body>
 <script src="script/main.js"></script>

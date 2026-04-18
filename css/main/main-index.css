@@ -5,6 +5,27 @@
     --option2: hsl(0, 0%, 80%);
     --moon: #979797;
     --sun:#ffd900;
+    --option4: rgb(150, 148, 148);
+    --black-05: rgba(0, 0, 0, 0.5);
+    --black-07: rgba(0, 0, 0, 0.7);
+    --black: #000;
+    --white: #fff;
+}
+
+.dark {
+    --primary: #7045ff;      
+    --option1: #25293a;
+    --option2: #33384d;
+    --option3: #2d3246;
+    --option4: #4a4f68;
+    
+    --moon: #f0f0f0;
+    --sun: #ffeb66;
+    
+    --black-05: rgba(255, 255, 255, 0.3);
+    --black-07: rgba(255, 255, 255, 0.5);
+    --black: #fff;          
+    --white: #0f111a;
 }
 
 * {

@@ -21,6 +21,7 @@ const addNoteForm = document.getElementById('add-note-form');
 const blankForm = document.getElementById('form');
 const darkLayer = document.querySelector('.dark-layer');
 const blurLayer = document.querySelector('.blur-layer');
+const logo = document.getElementById('Logo');
 
 // ============ //
 //    Script    //
@@ -45,14 +46,33 @@ function checkBlank() {
 }
 
 darkInput.addEventListener('click', () => {
-    if (darkInput.checked) {
-        darkIcon.classList.remove('ri-sun-line');
-        darkIcon.classList.add('ri-moon-fill');
+    const isDark = darkInput.checked;
+    if (isDark) {
+        document.documentElement.classList.add('dark');
+        darkIcon.classList.replace('ri-sun-line', 'ri-moon-fill');
+        logo.src = 'assets/svg/Logo7.svg';
     } else {
-        darkIcon.classList.remove('ri-moon-fill');
-        darkIcon.classList.add('ri-sun-line');
+        document.documentElement.classList.remove('dark');
+        darkIcon.classList.replace('ri-moon-fill', 'ri-sun-line');
+        logo.src = 'assets/svg/Logo6.svg';
     }
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
+
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+    darkInput.checked = true;
+    darkIcon.classList.replace('ri-sun-line', 'ri-moon-fill');
+    logo.src = 'assets/svg/Logo7.svg';
+} else {
+    document.documentElement.classList.remove('dark');
+    darkInput.checked = false;
+    darkIcon.classList.replace('ri-moon-fill', 'ri-sun-line');
+    logo.src = 'assets/svg/Logo6.svg';
+}
 
 // ==================== //
 // Notebook & Note CRUD //
@@ -354,6 +374,9 @@ function updateNotebookTitle(id, newTitle){
     if (editNotebook) {
         editNotebook.title = newTitle;
         localStorage.setItem('Notebooks', JSON.stringify(Notebooks));
+        if (notebookDasboardTitle.dataset.currentId == id) {
+            notebookDasboardTitle.innerHTML = newTitle;
+        }
     }
     renderNotebooks();
 }
@@ -375,6 +398,7 @@ addNotebookBtn.addEventListener('click', () => {
 
 notebookList.addEventListener('click', (e) => {
     const deleteBtn = e.target.closest('#delete-btn');
+    const editBtn = e.target.closest('#edit-btn');
     const card = e.target.closest('.notebook-card');
 
     if (deleteBtn) {
@@ -385,7 +409,12 @@ notebookList.addEventListener('click', (e) => {
         showCustomConfirm(`Are you sure want to delete "${notebookTitle}"?`, () => {
             deleteNotebookForm(notebookId);
         });
-    } else if(card && !card.classList.contains('draft')) {
+    } 
+    else if (editBtn) {
+        const notebookId = editBtn.closest('.notebook-card').dataset.id;
+        prepareEdit(notebookId);
+    } 
+    else if (card && !card.classList.contains('draft') && !card.querySelector('input')) {
         notebookCardClick(card.dataset.id);
     }
 });
