@@ -66,6 +66,9 @@ function getAllNotebooks() {
 function renderNotebooks(isAddingNotebook = false, editingId = null) {
     const Notebooks = getAllNotebooks();
     notebookList.innerHTML = '';
+    
+    // Ambil ID aktif untuk menentukan style kartu
+    const currentActiveId = notebookDasboardTitle.dataset.currentId;
 
     if(isAddingNotebook) {
         const draft = document.createElement('div');
@@ -86,7 +89,7 @@ function renderNotebooks(isAddingNotebook = false, editingId = null) {
 
     Notebooks.forEach((notebook) => {
         const card = document.createElement('div');
-        card.className = 'notebook-card';
+        card.className = `notebook-card ${notebook.id == currentActiveId ? 'selected' : ''}`;
         card.dataset.id = notebook.id;
 
         if(notebook.id == editingId) {
@@ -128,6 +131,9 @@ function notebookCardClick(id) {
         notebookDasboardTitle.innerHTML = selectedNotebook.title;
         notebookDasboardTitle.dataset.currentId = id;
         renderNotes(selectedNotebook.notes, id);
+        
+        // Render ulang agar class active berpindah
+        renderNotebooks();
     }
 }
 
@@ -184,13 +190,12 @@ function renderNoteEditor(title, content, isAdding, isEditing) {
     }
 }
 
-// FUNGSI CUSTOM DIALOG (Bisa buat Konfirmasi atau sekadar Pesan Peringatan)
+// FUNGSI CUSTOM DIALOG (Untuk Alert dan Confirm)
 function showCustomConfirm(message, onConfirm = null, isAlertOnly = false) {
     blurLayer.classList.add('show');
     blankForm.classList.add('show');
     
     if (isAlertOnly) {
-        // Mode Alert: Cuma ada tombol OK
         blankForm.innerHTML = `
             <p>${message}</p>
             <div class="form-buttons">
@@ -199,7 +204,6 @@ function showCustomConfirm(message, onConfirm = null, isAlertOnly = false) {
         `;
         blankForm.querySelector('.ok-btn').onclick = cancelForm;
     } else {
-        // Mode Confirm: Ada Cancel dan Confirm
         blankForm.innerHTML = `
             <p>${message}</p>
             <div class="form-buttons">
@@ -360,7 +364,7 @@ addNoteForm.addEventListener('click', () => {
     if (currentId) {
         openNote("Untitled", "Write your thought here...", true);
     } else {
-        // PENGGANTI ALERT: Pakai parameter isAlertOnly = true
+        // Ganti alert browser dengan custom alert
         showCustomConfirm("Please select a notebook first!", null, true);
     }
 });

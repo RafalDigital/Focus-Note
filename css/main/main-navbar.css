@@ -173,6 +173,7 @@
     background-color: transparent;
     cursor: pointer;
     color: rgb(150, 148, 148);
+    transition: .2s ease-out;
 }
 
 .buttons button:hover {
@@ -198,6 +199,19 @@
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     outline: none;
+}
+
+.notebook-card.selected {
+    background-color: var(--primary);
+    color: white;
+}
+
+.notebook-card.selected button {
+    color: var(--option2);
+}
+
+.notebook-card.selected button:hover {
+    color: white;
 }
 
 .footer {
