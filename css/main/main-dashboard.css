@@ -385,4 +385,7 @@ body, html {
         width: 100%; 
         margin-left: 0;
     }
+    .content {
+        margin-top: 5rem;
+    }
 }
