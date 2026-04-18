@@ -372,11 +372,17 @@ body, html {
     .note {
         max-width: 50%;
     }
+    .content {
+        margin-top: 5rem;
+    }
 }
 
 @media (max-width: 800px) {
     .note {
         max-width: 60%;
+    }
+    .content {
+        margin-top: 5rem;
     }
 }
 
