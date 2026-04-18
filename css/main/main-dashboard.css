@@ -394,4 +394,7 @@ body, html {
     .content {
         margin-top: 5rem;
     }
+    .blank {
+        top: 30%;
+    }
 }

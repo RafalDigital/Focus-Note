@@ -11,6 +11,7 @@
     padding: 20px;
     border-right: 0.4px solid var(--option2);
     background-color: var(--white);
+    z-index: 10;
 }
 
 .logo{display: flex; gap: .5rem;}
@@ -251,6 +252,7 @@
     width: calc(100% - 250px); 
     margin-left: 250px; /* Samakan dengan lebar .side-nav */
     /* background-color: var(--black); */
+    z-index: 5;
 }
 
 .navbar-1 {
@@ -350,7 +352,8 @@
     background-color: var(--primary);
     color: var(--white);
     cursor: pointer;
-    display: block;
+    display: none;
+    z-index: 100;
 }
 
 .mobile-add-note:active {
@@ -381,3 +384,5 @@
         display: block;
     }
 }
+
+/* Resposive pakai .side-nav */
