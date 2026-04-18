@@ -329,6 +329,8 @@
     color: var(--black);
     border-radius: .2rem;
     display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .mobile-menu:active {
@@ -366,6 +368,6 @@
         margin-top: 1rem;
     }
     .mobile-menu {
-        display: block;
+        display: flex;
     }
 }
