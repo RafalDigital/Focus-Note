@@ -144,6 +144,7 @@
     padding: 10px 15px;
     width: 95%;
     height: fit-content;
+    max-height: 3rem;
     background-color: var(--option1);
     border-radius: .5rem;
     color: var(--black);
