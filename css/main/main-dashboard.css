@@ -375,7 +375,7 @@ body, html {
     .content {
         margin-top: 5rem;
     }
-    .form {
+    .form, .note {
         max-width: 60%;
     }
 }
@@ -387,7 +387,7 @@ body, html {
     .content {
         margin-top: 5rem;
     }
-    .form {
+    .form, .note {
         max-width: 65%;
     }
     .delete-note-card {
@@ -407,7 +407,7 @@ body, html {
     .blank {
         top: 30%;
     }
-    .form {
+    .form, .note {
         max-width: 70%;
     }
 }
