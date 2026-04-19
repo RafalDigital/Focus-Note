@@ -97,7 +97,7 @@ function renderNotebooks(isAddingNotebook = false, editingId = null) {
     if(isAddingNotebook) {
         const draft = document.createElement('div');
         draft.className = 'notebook-card draft';
-        draft.innerHTML = `<input type="text" id="draft-input" value="Notebook" placeholder="Notebook name..." autofocus>`;
+        draft.innerHTML = `<input type="text" id="draft-input" value="Notebook" placeholder="Notebook name..." autofocus enterkeyhint="done">`;
         notebookList.appendChild(draft);
 
         const inputDraft = document.getElementById('draft-input');
@@ -117,7 +117,7 @@ function renderNotebooks(isAddingNotebook = false, editingId = null) {
         card.dataset.id = notebook.id;
 
         if(notebook.id == editingId) {
-            card.innerHTML = `<input type="text" id="edit-input" value="${notebook.title}" placeholder="Notebook name..." autofocus>`;
+            card.innerHTML = `<input type="text" id="edit-input" value="${notebook.title}" placeholder="Notebook name..." autofocus enterkeyhint="done">`;
             notebookList.appendChild(card);
             const inputEdit = document.getElementById('edit-input');
             inputEdit.addEventListener('keydown', (e) => {
