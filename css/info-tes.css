@@ -262,7 +262,7 @@
     justify-content: space-around;
     border-radius: 1rem;
     margin-top: .5rem;
-    color:var(--primary);
+    color: var(--bg-main);
     opacity: 0;
 }
 

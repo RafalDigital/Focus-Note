@@ -12,7 +12,7 @@
 }
 
 .navbar.scrolled {
-    border-bottom: 1px solid #bbbbbb;
+    border-bottom: 1px solid var(--border-focus);
 }
 
 a {text-decoration: none;}

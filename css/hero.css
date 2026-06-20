@@ -10,9 +10,9 @@
 
 .hero-container {
     width: 100%;
-    min-height: 100dvh; /* Tetap satu layar penuh */
+    min-height: 100dvh;
     display: flex;
-    justify-content: flex-start; /* KUNCINYA: Paksa konten ke ATAS, bukan ke tengah */
+    justify-content: flex-start;
     margin-top: 13rem;
 }
 
@@ -72,7 +72,7 @@
     padding: 10px 15px;
     width: 6rem;
     text-align: center;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--border-focus);
     background-color: var(--primary);
     border-radius: 0.25rem;
     color: white;
@@ -109,6 +109,7 @@
     color: var(--primary);
     font-size: 16px;
     display: inline;
+    cursor: pointer;
 }
 
 /* RIGHT CONTENT */

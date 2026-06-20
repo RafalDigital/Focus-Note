@@ -1,413 +1,280 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    width: 100%;
-    height: 100%;
-    max-height: 100dvh;
-    overflow: hidden;
-}
-
+/* Main Layout Grid System */
 .main-content {
+    background-color: var(--bg-main);
+    height: 100dvh;
+    width: calc(100% - 260px); 
+    margin-left: 260px;
     position: relative;
-    background-color: var(--option1);
-    height: 100%;
-    width: calc(100% - 250px); 
-    margin-left: 250px;
 }
 
+/* Empty State */
 .blank {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 0.5;
-    color: var(--black);
+    gap: 0.5rem;
+    text-align: center;
+}
 
+.blank i {
+    font-size: 2.5rem;
+    color: var(--border-subtle);
 }
-.blank i{
-    font-size: 4rem;
-    opacity: .2;
-}
+
 .blank h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.875rem;
     font-weight: 400;
-    /* margin-top: -1rem; */
-    opacity: .5;
-    font-size: 14px;
+    color: var(--text-secondary);
 }
 
+/* Grid Note Dashboard Items */
 .content {
     display: grid;
-    /* align-items: center; */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     grid-auto-rows: min-content;
     gap: 1rem;
     overflow-y: auto;
-    height: calc(100vh - 5rem); 
+    height: calc(100dvh - 4.5rem); 
     width: 100%;
-    /* background: #000; */
-    /* margin-top: 5rem; */
-    padding-block: 2rem;
-    margin-top: 5.2rem;
-    padding-inline: 2rem;
+    padding: 32px;
+    margin-top: 4.5rem;
 }
 
+/* Minimalist Developer Cards Layout */
 .content .note-card {
     position: relative;
     width: 100%;
-    height: 100%;
-    max-height: 10rem;
-    aspect-ratio: 16 / 9; 
-    background-color: var(--option3);
-    border-radius: .5rem;
-    border: 1px solid var(--option2);
-    margin-inline: auto;
-    padding: 10px 10px;
+    height: 11rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 20px;
     overflow: hidden;
-    transition: .2s ease-out;
+    transition: border-color 0.2s, transform 0.2s;
     cursor: pointer;
 }
 
+.content .note-card:hover {
+    border-color: var(--border-focus);
+}
+
+.note-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.note-card p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Note Gradient Overlay Mask */
 .note-card .note-footer {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 5rem;
-    background: linear-gradient(to top, var(--option3) 40%, transparent);
-    z-index: 5;
-}
-
-.note-card h3 {
-    font-weight: 600;
-    color: var(--black-07);
-    margin-bottom: .5rem;
-    font-size: 16px;
-}
-
-.note-card p {
-    font-weight: 400;
-    color: var(--black-05);
-    margin-top: .2rem;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.line-card {
-    width: 100%;
-    height: 1px;
-    background-color: var(--option2);
-    border-radius: 100rem;
-    margin-inline: auto;
-    margin-block: .4rem;
-}
-
-.line-card-note {
-    width: 100%;
-    height: 1.5px;
-    background-color: var(--option2);
-    border-radius: 100rem;
-    margin-inline: auto;
-    margin-top: -.2rem;
-    opacity: .6;
+    height: 3.5rem;
+    background: linear-gradient(to top, var(--bg-card) 30%, transparent);
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 12px;
 }
 
 .delete-note-card {
-    position: absolute;
-    bottom: .5rem;
-    right: .5rem;
     cursor: pointer;
-    padding: 5px;
-    opacity: 0;
-    pointer-events: none;
-    transition: .2s ease-out;
     border: none;
-    background-color: transparent;
-    color: var(--option4);
+    background: transparent;
+    color: var(--text-secondary);
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+    z-index: 5;
 }
 
 .delete-note-card:hover {
-    color: var(--black);
-}
-
-.note-card:hover {
-    box-shadow: 0px 4px 10px var(--black-05);
+    color: #ef4444; /* Alert color minimalis untuk penghapusan */
 }
 
 .note-card:hover .delete-note-card {
     opacity: 1;
-    pointer-events: all;
 }
 
-/* Note */
-.note {
-    position: absolute;
+/* Modal Core System Structure (Developer Command Centers) */
+.note, .form {
+    position: fixed;
     display: flex;
     flex-direction: column;
     left: 50%;
-    top: 51%;
-    transform: translateX(-50%) translateY(-50%);
-    background-color: var(--option3);
-    border: 1px solid var(--option2);
-    border-radius: .5rem;
-    padding: 15px 20px;
-    z-index: 100;
-    max-width: 40%;
-    width: 100%;
-    max-height: 60%;
-    height: 100%;
-    gap: 1rem;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 24px;
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+    gap: 1.25rem;
     opacity: 0;
     pointer-events: none;
-    overflow: hidden;
+    transition: opacity 0.2s, transform 0.2s;
 }
 
-.note.show {
+.note.show, .form.show {
     opacity: 1;
     pointer-events: all;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .note .title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .note h3 {
-    font-weight: 500;
-    font-size: 18px;
-    margin: 0;
-    color: var(--black);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
-.note .title button {
+.note .title button, .note .close-note {
     border: none;
-    background-color: transparent;
-    color: var(--option4);
+    background: transparent;
+    color: var(--text-secondary);
     cursor: pointer;
-    transition: .2s ease-out;
 }
 
-.note .title button:hover {
-    color: var(--black);
+.note .title button:hover { color: var(--text-primary); }
+
+.note .note-body-view {
+    overflow-y: auto;
+    max-height: 250px;
 }
 
 .note p {
-    font-size: 14px;
-    margin: 0;
-    color: var(--black);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-primary);
 }
 
-.buttons-note {
-    position: absolute;
+/* Action Controls Row System */
+.buttons-note, .form-buttons {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
-    padding-inline: 1.5rem;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 5rem;
-    background: linear-gradient(to top, var(--option3) 40%, transparent);
-    z-index: 2;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
 }
 
-.buttons-note button {
-    padding: 8px 15px;
+.buttons-note button, .form-buttons button {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid var(--border-subtle);
     background-color: transparent;
+    color: var(--text-primary);
+    transition: background-color 0.2s;
+}
+
+.buttons-note button:hover, .form-buttons button:hover {
+    background-color: var(--border-subtle);
+}
+
+/* Primary Action Accent Modifications */
+.buttons-note button.save-note.change, 
+.form-buttons .submit-btn,
+.form-buttons .ok-btn {
+    background-color: var(--text-primary);
+    color: var(--bg-main);
     border: none;
-    border-radius: .4rem;
-    outline: none;
-    color: var(--option4);
-    cursor: pointer;
-    transition: .2s ease-out;
 }
 
-.buttons-note button:hover {
-    color: var(--primary);
+.buttons-note button.save-note.change:hover,
+.form-buttons .submit-btn:hover,
+.form-buttons .ok-btn:hover {
+    opacity: 0.9;
+    background-color: var(--text-primary);
 }
 
-.buttons-note button.save-note {
-    background-color: var(--option2);
-    color: var(--option4);
-    cursor: pointer;
-    transition: .2s ease-out;
-}
-
-.buttons-note button.save-note.change {
-    color: var(--white);
-    background-color: var(--primary);
-}
-
-.cancel-note {
-    margin-right: .5rem;
-}
-
-/* Form */
-.form {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    left: 50%;
-    top: 51%;
-    transform: translateX(-50%) translateY(-50%);
-    background-color: var(--white);
-    border-radius: .5rem;
-    padding: 15px 20px;
-    z-index: 1000;
-    max-width: 40%;
+/* Inputs & Editors Styling */
+.edit-note-title, .edit-note-content {
     width: 100%;
-    gap: 1rem;
-    opacity: 0;
-    pointer-events: none;
-    background-color: var(--option3);
-    border: 1px solid var(--option2);
-    color: var(--black);
-}
-
-.form .form-buttons {
-    display: flex;
-    justify-content: end;
-    gap: 1rem;
-}
-
-.form-buttons button {
-    padding: 8px 15px;
-    background-color: transparent;
-    border: none;
-    border-radius: .4rem;
-    outline: none;
-    color: var(--primary);
-    cursor: pointer;
-}
-
-.form-buttons .submit-btn, .delete-confirm, .ok-btn {
-    background-color: var(--primary);
-    border: 1px solid var(--primary);
-    color: white;
-    transition: .4s ease-in-out;
-}
-
-.form-buttons .submit-btn:hover {
-    background-color: transparent;
-    color: var(--primary);
-}
-
-.dark-layer {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: var(--black-05);
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 5;
-}
-
-.dark-layer.show, .form.show {
-    opacity: 1;
-    pointer-events: all;
-    transition: .2s ease-in-out;
-}
-
-.blur-layer {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: var(--black-05);
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 999;
-    transition: .2s ease-in-out;
-}
-
-.blur-layer.show {
-    backdrop-filter: blur(10px);
-    opacity: 1;
-    pointer-events: all;
-}
-
-.form.show {
-    top: 50%;
-}
-
-/* Note Full Editor */
-.edit-note-content {
-    resize: none;
-    max-height: 15rem;
-    height: 100%;
+    background: transparent;
     border: none;
     outline: none;
-    background-color: transparent;
-    font-size: 14px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--black);
+    color: var(--text-primary);
+    font-family: inherit;
 }
 
 .edit-note-title {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 18px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--black);
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 8px;
 }
 
-.edit-note-title:focus {
-    border-bottom: 1px solid var(--black-05);
+.edit-note-content {
+    min-height: 150px;
+    resize: none;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
-@media (max-width: 1200px) {
-    .note {
-        max-width: 50%;
-    }
-    .content {
-        margin-top: 5rem;
-    }
-    .form, .note {
-        max-width: 60%;
-    }
+/* Background Backdrop Blurs */
+.dark-layer, .blur-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
 }
 
-@media (max-width: 800px) {
-    .note {
-        max-width: 60%;
-    }
-    .content {
-        margin-top: 5rem;
-    }
-    .form, .note {
-        max-width: 65%;
-    }
-    .delete-note-card {
-        opacity: 1;
-        pointer-events: all;
-    }
+.dark-layer.show {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 9;
+}
+
+.blur-layer.show {
+    opacity: 1;
+    pointer-events: all;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999;
 }
 
 @media (max-width: 620px) {
     .main-content {
-        width: 100%; 
+        width: 100%;
         margin-left: 0;
     }
     .content {
-        margin-top: 5rem;
+        padding: 20px;
     }
-    .blank {
-        top: 30%;
-    }
-    .form, .note {
-        max-width: 70%;
+    .delete-note-card {
+        opacity: 1;
     }
 }
