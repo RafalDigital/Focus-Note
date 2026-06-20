@@ -31,4 +31,4 @@ V1:
 This repository is open source
 
 #
-@RafalDigital
+Copyright (c) 2026 RafalDigital
